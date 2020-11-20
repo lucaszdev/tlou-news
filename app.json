@@ -1,0 +1,12 @@
+{
+  "name": "tlou-news",
+  "displayName": "tlou-news",
+  "expo": {
+    "name": "tlou-news",
+    "slug": "tlou-news",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
