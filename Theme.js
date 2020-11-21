@@ -1,6 +1,6 @@
 export const darkTheme = {
     mode: "dark",
-    PRIMARY_BACKGROUND_COLOR: "#202020",
+    HEADER_BACKGROUND_COLOR: "#202020",
     STATUS_BAR_STYLE: "light-content",
     STATUS_BAR_BACKGROUND_COLOR: "#202020",
     ICON_HEADER_COLOR: "#FFFFFF",
@@ -8,11 +8,13 @@ export const darkTheme = {
     HEADER_TITLE_COLOR: "#FFFFFF",
     BACKGROUND_PAGES_COLOR: "#181818",
     TEXT_PAGES: "#FFFFFF",
+    ACTIVE_BOTTOM_TAB_ICON: "#FFFFFF",
+    BOTTOM_TAB_BACKGROUND_COLOR: "#202020",
 }
 
 export const lightTheme = {
     mode: "light",
-    PRIMARY_BACKGROUND_COLOR: "#FFFFFF",
+    HEADER_BACKGROUND_COLOR: "#FFFFFF",
     STATUS_BAR_STYLE: "dark-content",
     STATUS_BAR_BACKGROUND_COLOR: "#FFFFFF",
     ICON_HEADER_COLOR: "#000000",
@@ -20,4 +22,6 @@ export const lightTheme = {
     HEADER_TITLE_COLOR: "#000000",
     BACKGROUND_PAGES_COLOR: "#FFFFFF",
     TEXT_PAGES: "#000000",
+    ACTIVE_BOTTOM_TAB_ICON: "#000000",
+    BOTTOM_TAB_BACKGROUND_COLOR: "#FFFFFF",
 }

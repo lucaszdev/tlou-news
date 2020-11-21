@@ -34,9 +34,13 @@ export default function App() {
             <Tab.Navigator
                 initialRouteName="Home"
                 tabBarOptions={{
-                    activeTintColor: '#9C27B0',
+                    activeTintColor: theme.ACTIVE_BOTTOM_TAB_ICON,
                     inactiveTintColor: '#777',
                     showLabel: false,
+                    style: {
+                        backgroundColor: theme.BOTTOM_TAB_BACKGROUND_COLOR,
+                        borderTopWidth: 0,
+                    },
                 }}
             >
                 <Tab.Screen
