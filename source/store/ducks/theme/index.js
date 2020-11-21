@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 export default function theme(state = INITIAL_STATE, action) {
     switch (action.type) {
         case ThemeTypes.SWITCH_THEME:
-            return { theme: action.theme };
+            return { theme: action.payload };
 
         default:
             return state;

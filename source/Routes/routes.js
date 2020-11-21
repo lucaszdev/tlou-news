@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSelector } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -14,18 +15,20 @@ import {
     FeedbackTouch
 } from './styles.routes';
 
-const buttonNativeFeedback = ({ children, style, ...props }) => (
-    <FeedbackTouch
-        {...props}
-        background={FeedbackTouch.Ripple('#9C27B0', true)}
-    >
-        <ContainerFeedbackTouch style={style}>
-            {children}
-        </ContainerFeedbackTouch>
-    </FeedbackTouch>
-);
-
 export default function App() {
+    const theme = useSelector(state => state.theme.theme);
+
+    const buttonNativeFeedback = ({ children, style, ...props }) => (
+        <FeedbackTouch
+            {...props}
+            background={FeedbackTouch.Ripple(theme.FEEDBACK_TOUCH_COLOR, true)}
+        >
+            <ContainerFeedbackTouch style={style}>
+                {children}
+            </ContainerFeedbackTouch>
+        </FeedbackTouch>
+    );
+
     return (
         <NavigationContainer>
             <Tab.Navigator

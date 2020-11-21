@@ -1,5 +1,4 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Feather';
 
 import { useSelector, useDispatch } from 'react-redux';
 import * as ThemeActions from '../../store/ducks/theme/actions';
@@ -11,12 +10,23 @@ import {
     Title,
     FeedbackTouch,
     ContainerFeedbackTouch,
-    ChildrenFeedbackTouch
+    ChildrenFeedbackTouch,
+    IconSwitchTheme
 } from './styles';
 
 const Header = () => {
     const theme = useSelector(state => state.theme.theme);
     const dispatch = useDispatch()
+
+    const toggleTheme = () => {
+        switch (theme.mode) {
+            case 'dark':
+                return dispatch(ThemeActions.SwitchTheme(lightTheme));
+
+            default:
+                return dispatch(ThemeActions.SwitchTheme(darkTheme));
+        }
+    }
 
     return (
         <>
@@ -25,15 +35,15 @@ const Header = () => {
                 backgroundColor={theme.STATUS_BAR_BACKGROUND_COLOR}
             />
 
-            <Container>
-                <Title>The Last Of Us News</Title>
+            <Container isTheme={theme} style={{ elevation: 1 }}>
+                <Title style={{ color: theme.HEADER_TITLE_COLOR }}>The Last Of Us News</Title>
                 <ContainerFeedbackTouch>
                     <FeedbackTouch
-                        background={FeedbackTouch.Ripple('#9C27B0', true)}
-                    // onPress={() => }
+                        background={FeedbackTouch.Ripple(theme.FEEDBACK_TOUCH_COLOR, true)}
+                        onPress={() => toggleTheme()}
                     >
                         <ChildrenFeedbackTouch>
-                            <Icon name='moon' size={26} color='#000' />
+                            <IconSwitchTheme name='moon' size={26} color={theme.ICON_HEADER_COLOR} />
                         </ChildrenFeedbackTouch>
                     </FeedbackTouch>
                 </ContainerFeedbackTouch>
