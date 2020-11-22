@@ -6,6 +6,7 @@ export const Container = styled.View`
     background-color: ${props => props.theme.HEADER_BACKGROUND_COLOR};
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     height: 50px;
 `;
@@ -14,6 +15,11 @@ export const Title = styled.Text`
     font-size: 30px;
     color: ${props => props.theme.HEADER_TITLE_COLOR};
     font-family: 'Tungsten-SemiBold';
+`;
+
+export const CountText = styled.Text`
+    font-size: 18px;
+    color: ${props => props.theme.HEADER_TITLE_COLOR};
 `;
 
 export const ContainerFeedbackTouch = styled.View``;

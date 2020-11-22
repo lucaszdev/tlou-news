@@ -6,11 +6,34 @@ export const getFormattedDate = () => {
 }
 
 export const unlessFormattedDate = (datePublished) => {
-    /**2020-11-21T11:53:19 */
-
     const dateNow = getFormattedDate();
     const dateOfThePublication = datePublished;
 
     const onlyDateNow = dateNow.split('T')[0];
     const onlyDateOfThePublication = dateOfThePublication.split('T')[0];
+
+    const onlyHoursNow = dateNow.split('T')[1];
+    const onlyHoursOfThePublication = dateOfThePublication.split('T')[1];
+
+    if (onlyDateNow.split('-')[0] === onlyDateOfThePublication.split('-')[0]) {
+        if (onlyDateNow.split('-')[1] === onlyDateOfThePublication.split('-')[1]) {
+            const calcDay = Number(onlyDateNow.split('-')[2]) - Number(onlyDateOfThePublication.split('-')[2])
+
+            if (calcDay === 1) {
+                return `Yesterday at ${onlyHoursOfThePublication}`;
+            }
+        }
+    }
+
+    if (onlyDateNow !== onlyDateOfThePublication) {
+        return onlyDateOfThePublication + " at " + onlyHoursOfThePublication;
+    }
+
+    const calcHours = Number(onlyHoursNow.split('-')[0]) - Number(onlyHoursOfThePublication.split('-')[0])
+
+    if (calcHours < 1 || calcHours > 23) {
+        return onlyDateOfThePublication + " at " + onlyHoursOfThePublication;
+    }
+
+    return `${calcHours} hours ago`
 }

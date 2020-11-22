@@ -1,8 +1,9 @@
 import NewsTypes from './types';
 
-export function NewsRequest() {
+export function NewsRequest(page) {
     return {
-        type: NewsTypes.NEWS_REQUEST
+        type: NewsTypes.NEWS_REQUEST,
+        payload: { page }
     };
 }
 

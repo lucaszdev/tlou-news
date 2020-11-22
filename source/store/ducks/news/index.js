@@ -2,6 +2,7 @@ import NewsTypes from './types';
 
 const INITIAL_STATE = {
     data: [],
+    totalCount: 0,
     error: false,
     loading: true
 }
@@ -12,7 +13,13 @@ export default function news(state = INITIAL_STATE, action) {
             return { ...state, loading: true }
 
         case NewsTypes.NEWS_SUCCESS:
-            return { ...state, loading: false, error: false, data: action.payload.data }
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                data: [...state.data, ...action.payload.data.value],
+                totalCount: action.payload.data.totalCount
+            }
 
         case NewsTypes.NEWS_FAILURE:
             return { ...state, loading: false, error: true, data: [] }

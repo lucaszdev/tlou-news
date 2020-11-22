@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components/native';
 import {
     Container,
     Title,
+    CountText,
     FeedbackTouch,
     ContainerFeedbackTouch,
     ChildrenFeedbackTouch,
@@ -28,6 +29,7 @@ const getData = async () => {
 
 const Header = () => {
     const theme = useSelector(state => state.theme.theme);
+    const news = useSelector(state => state.news.data);
     const dispatch = useDispatch()
 
     getData().then(theme => {
@@ -56,6 +58,7 @@ const Header = () => {
 
     return (
         <ThemeProvider theme={theme}>
+            {console.info("TOTAL NEWS", news.length)}
             <StatusBar
                 barStyle={theme.STATUS_BAR_STYLE}
                 backgroundColor={theme.STATUS_BAR_BACKGROUND_COLOR}
@@ -63,6 +66,7 @@ const Header = () => {
 
             <Container style={{ elevation: 1 }}>
                 <Title>The Last Of Us News</Title>
+                {/* <CountText>News: 1000</CountText> */}
                 <ContainerFeedbackTouch>
                     <FeedbackTouch
                         background={FeedbackTouch.Ripple(theme.FEEDBACK_TOUCH_COLOR, true)}
