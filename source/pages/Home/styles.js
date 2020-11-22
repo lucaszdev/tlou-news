@@ -1,5 +1,18 @@
 import styled from 'styled-components/native';
 
+export const TotalNewsInPageContainer = styled.View`
+    justify-content: center;
+    align-items: center;
+    background-color: ${props => props.theme.BACKGROUND_PAGES_COLOR};
+    padding: 10px;
+`;
+
+export const TotalNewsInPage = styled.Text`
+    font-size: 13px;
+    font-weight: bold;
+    color: ${props => props.theme.TEXT_PAGES};
+`;
+
 export const Container = styled.View`
     flex: 1;
     justify-content: center;
@@ -7,8 +20,6 @@ export const Container = styled.View`
 `;
 
 export const ActivityIndicator = styled.ActivityIndicator``;
-
-export const RefreshControl = styled.RefreshControl``;
 
 export const CardContainer = styled.TouchableOpacity`
     background-color: ${props => props.theme.COLOR_POSTS_HOME};
@@ -20,7 +31,7 @@ export const CardContainer = styled.TouchableOpacity`
 `;
 
 export const ContentContainer = styled.View`
-    max-width: 195px;
+    width: 195px;
 `;
 
 export const CardPostTitle = styled.Text`
@@ -45,6 +56,13 @@ export const ImagePost = styled.Image`
     width: 100px;
     height: 100px;
     border-radius: 10px;
+`;
+
+export const NoImageContainer = styled.View`
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #FFF;
 `;
 
 export const CardPostDate = styled.Text`

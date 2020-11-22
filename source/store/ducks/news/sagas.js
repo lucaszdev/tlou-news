@@ -1,7 +1,12 @@
 import { call, put } from 'redux-saga/effects';
 import api from '../../../services/api';
 
-import { NewsFailure, NewsSuccess } from './actions';
+import {
+    NewsFailure,
+    NewsSuccess,
+    NewsRefreshFailure,
+    NewsRefreshSuccess
+} from './actions';
 
 export function* NewsLoad({ payload }) {
     const { page } = payload;

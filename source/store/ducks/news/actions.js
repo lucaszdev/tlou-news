@@ -19,4 +19,3 @@ export function NewsFailure() {
         type: NewsTypes.NEWS_FAILURE
     };
 }
-

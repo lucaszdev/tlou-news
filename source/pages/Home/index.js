@@ -7,22 +7,24 @@ import {
 
 import { ThemeProvider } from 'styled-components';
 import {
+    TotalNewsInPageContainer,
+    TotalNewsInPage,
     Container,
     ActivityIndicator,
-    RefreshControl,
     CardContainer,
     ContentContainer,
     CardPostTitle,
     CardPostDescription,
     CardPostInfoContainer,
     ImageContainer,
+    NoImageContainer,
     ImagePost,
     CardPostDate
 } from './styles';
 
 import { unlessFormattedDate } from '../../utils/functionsUtils';
 
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Linking } from 'react-native';
 
 const Home = () => {
     const theme = useSelector(state => state.theme.theme);
@@ -32,7 +34,7 @@ const Home = () => {
 
     const [page, setPage] = useState(1);
     const [firsttime, setFirstTime] = useState(0);
-    const [refreshcontrol, setRefreshControl] = useState(false);
+    const [lengthnews, setLengthNews] = useState(0);
 
     const dispatch = useDispatch();
 
@@ -41,28 +43,21 @@ const Home = () => {
             setFirstTime(1);
             dispatch(NewsRequest(page));
 
-            setRefreshControl(false);
             setPage(page + 1);
         }
     }
 
-    const LoadNewsRefreshControl = () => {
-        setRefreshControl(true);
-        setPage(0)
-
-        dispatch(NewsRequest(page));
-        setRefreshControl(false);
-        setPage(page + 1);
-    }
-
     useEffect(() => {
         LoadNews();
+
+
     }, [])
 
     const renderPosts = ({ item }) => (
         <CardContainer
             style={{ elevation: 2 }}
             activeOpacity={.7}
+        // onPress={() => Linking}
         >
             <ContentContainer>
                 <CardPostTitle>{item.title}</CardPostTitle>
@@ -77,7 +72,10 @@ const Home = () => {
             </ContentContainer>
 
             <ImageContainer>
-                <ImagePost source={{ uri: item.image.url }} />
+                {item.image.url ? (
+                    <ImagePost source={{ uri: item.image.url }} />
+
+                ) : <NoImageContainer />}
             </ImageContainer>
         </CardContainer>
     )
@@ -95,6 +93,10 @@ const Home = () => {
     return (
         <>
             <ThemeProvider theme={theme}>
+                <TotalNewsInPageContainer>
+                    <TotalNewsInPage>Total News: {news.length}</TotalNewsInPage>
+                </TotalNewsInPageContainer>
+
                 <Container>
                     {news.length === 0 && newsLoading ?
                         <ActivityIndicator size='large' color={theme.COLOR_LOADING_PAGES} />
@@ -103,14 +105,6 @@ const Home = () => {
                                 data={news}
                                 keyExtractor={(post, index) => post.id + index.toString()}
                                 renderItem={renderPosts}
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={refreshcontrol}
-                                        onRefresh={LoadNewsRefreshControl}
-                                        colors={[theme.COLOR_REFRESH_ARROW]}
-                                        progressBackgroundColor={theme.COLOR_REFRESH_BACKGROUND}
-                                    />
-                                }
                                 onEndReached={LoadNews}
                                 onEndReachedThreshold={.1}
                                 ListFooterComponent={RenderFooter}

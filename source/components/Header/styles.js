@@ -17,11 +17,6 @@ export const Title = styled.Text`
     font-family: 'Tungsten-SemiBold';
 `;
 
-export const CountText = styled.Text`
-    font-size: 18px;
-    color: ${props => props.theme.HEADER_TITLE_COLOR};
-`;
-
 export const ContainerFeedbackTouch = styled.View``;
 
 export const FeedbackTouch = styled(TouchableNativeFeedback)``;

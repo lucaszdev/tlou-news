@@ -5,6 +5,6 @@ import { NewsLoad } from './news/sagas';
 
 export default function* rootSaga() {
     return yield all([
-        takeLatest(NewsTypes.NEWS_REQUEST, NewsLoad)
+        takeLatest(NewsTypes.NEWS_REQUEST, NewsLoad),
     ]);
 }
