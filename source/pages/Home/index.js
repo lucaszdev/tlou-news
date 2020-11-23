@@ -34,7 +34,6 @@ const Home = () => {
 
     const [page, setPage] = useState(1);
     const [firsttime, setFirstTime] = useState(0);
-    const [lengthnews, setLengthNews] = useState(0);
 
     const dispatch = useDispatch();
 
@@ -49,15 +48,13 @@ const Home = () => {
 
     useEffect(() => {
         LoadNews();
-
-
     }, [])
 
     const renderPosts = ({ item }) => (
         <CardContainer
             style={{ elevation: 2 }}
             activeOpacity={.7}
-        // onPress={() => Linking}
+            onPress={() => Linking.openURL(item.url)}
         >
             <ContentContainer>
                 <CardPostTitle>{item.title}</CardPostTitle>
@@ -81,7 +78,7 @@ const Home = () => {
     )
 
     const RenderFooter = () => {
-        if (newsLoading) return null;
+        if (newsLoading && news.length === 5 * page) return null;
 
         return (
             <View style={{ marginBottom: 10 }}>
@@ -94,7 +91,7 @@ const Home = () => {
         <>
             <ThemeProvider theme={theme}>
                 <TotalNewsInPageContainer>
-                    <TotalNewsInPage>Total News: {news.length}</TotalNewsInPage>
+                    <TotalNewsInPage>Loaded News: {news.length}</TotalNewsInPage>
                 </TotalNewsInPageContainer>
 
                 <Container>
