@@ -6,6 +6,7 @@ import {
 } from '../../store/ducks/news/actions';
 
 import { ThemeProvider } from 'styled-components';
+
 import {
     TotalNewsInPageContainer,
     TotalNewsInPage,
