@@ -23,7 +23,7 @@ export function* NewsLoad({ payload }) {
                 withThumbnails: true
             },
             headers: {
-                'x-rapidapi-key': '',
+                'x-rapidapi-key': '5352d076b9msh9e3246056cbdea5p1c8d58jsnc02a30343b97',
                 'x-rapidapi-host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
             }
         });
